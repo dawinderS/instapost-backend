@@ -6,6 +6,8 @@ type User {
   name: String
   phone: Int
   gender: String
+  private: Boolean
+  privateAcc: Boolean
   followers: [User!]!
   following: [User!]!
   posts: [Post!]!

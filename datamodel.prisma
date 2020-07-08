@@ -6,6 +6,8 @@ type User {
   name: String
   phone: Int
   gender: String
+  private: Boolean @default(value: false)
+  privateAcc: Boolean @default(value: false)
   followers: [User!]! @relation(name: "FollowRelation")
   following: [User!]! @relation(name: "FollowRelation")
   posts: [Post!]!
