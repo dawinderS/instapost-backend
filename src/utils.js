@@ -23,7 +23,7 @@ export const sendSecretMail = (address, secret) => {
   const email = { 
     from: "instapluslogin@gmail.com",
     to: address,
-    subject: "Login passcode for InstaPlus",
+    subject: "Login passcode for Instapost",
     html: `Hello user, your login passcode is <b>${secret}</b>. <br>Copy paste it on the app to log in!`
   }
   return sendMail(email);
