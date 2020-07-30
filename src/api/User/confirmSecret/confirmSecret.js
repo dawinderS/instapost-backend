@@ -5,8 +5,14 @@ export default {
   Mutation: {
     confirmSecret: async(_, args) => {
       const { email, secret } = args;
-      const user = await prisma.user({ email });
-      if (email === "demo@gmail.com") {
+      let user;
+      if (email.includes("@")) {
+        user = await prisma.user({ email });
+      } else {
+        user = await prisma.user({ username: email });
+      }
+
+      if (email === "demo@gmail.com" || email === "demoUser") {
         await prisma.updateUser({ 
           where: { id: user.id }, 
           data: { loginSecret: "" }
