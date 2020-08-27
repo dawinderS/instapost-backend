@@ -23,7 +23,7 @@ export default {
               }
             }},
             {user: {
-              id_in: [...following.map((user) => user.id), user.id],
+              id_in: [...following.map((user) => user.id)],
               id_not: user.id
             }},
           ]

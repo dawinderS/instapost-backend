@@ -15,7 +15,7 @@ export default {
               connect: {
                 id
               }
-            }
+            },
           }
         });
         return true;

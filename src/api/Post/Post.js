@@ -38,5 +38,6 @@ export default {
         })
         .aggregate()
         .count(),
+    action: ({ id }) => "EDIT" || "DELETE",
   },
 };
