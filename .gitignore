@@ -105,3 +105,4 @@ dist
 generated
 notes.md
 prisma.yml
+build
