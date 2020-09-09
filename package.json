@@ -15,14 +15,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dawinderS/instaClone.git"
+    "url": "git+https://github.com/dawinderS/instapost-backend.git"
   },
   "author": "Dawinder Singh",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dawinderS/instaClone/issues"
+    "url": "https://github.com/dawinderS/instapost-backend/issues"
   },
-  "homepage": "https://github.com/dawinderS/instaClone#readme",
+  "homepage": "https://github.com/dawinderS/instapost-backend#readme",
   "dependencies": {
     "@babel/cli": "^7.11.5",
     "@babel/core": "^7.10.2",

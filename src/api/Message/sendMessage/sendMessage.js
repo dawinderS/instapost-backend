@@ -7,7 +7,17 @@ export default {
       const { user } = request;
       const { roomId, message, toId } = args;
       let room;
-      if (roomId === undefined) {
+      
+      const existingRoom = await prisma.rooms({
+        where: {
+          AND: [
+            { participants_some: { id: user.id } },
+            { participants_some: { id: toId } },
+          ],
+        },
+      });
+
+      if (existingRoom.length < 1) {
         if (user.id !== toId) {
           room = await prisma.createRoom({
             participants: {
@@ -16,28 +26,22 @@ export default {
           });
         }
       } else {
-        room = await prisma.room({ id: roomId });
+        room = existingRoom[0];
         if (!room) {
           throw Error("Chat with this user not found");
         }
       }
-      const getTo = room.participants.filter(
-        participant => participant.id !== user.id
-      )[0];
+
       return prisma.createMessage({
         text: message,
         from: {
           connect: { id: user.id }
         },
         to: {
-          connect: {
-            id: roomId ? getTo.id : toId
-          }
+          connect: { id: toId }
         },
         room: {
-          connect: {
-            id: room.id
-          }
+          connect: { id: room.id }
         }
       });
     }

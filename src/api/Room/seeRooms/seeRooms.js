@@ -8,9 +8,10 @@ export default {
       return prisma.rooms({
         where: {
           participants_some: {
-            id: user.id
-          }
-        }
+            id: user.id,
+          },
+        },
+        orderBy: "updatedAt_DESC",
       });
     }
   }

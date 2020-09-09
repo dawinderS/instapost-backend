@@ -61,7 +61,7 @@ type Room {
   updatedAt: DateTime! @updatedAt
   id: ID! @id
   participants: [User!]!
-  messages: [Message!]!
+  messages: [Message!]! @relation(name: "RoomMessages" onDelete: CASCADE)
 }
 
 type Message {
@@ -70,5 +70,5 @@ type Message {
   text: String!
   from: User! @relation(name: "From")
   to: User! @relation(name: "To")
-  room: Room!
+  room: Room! @relation(name: "RoomMessages")
 }
