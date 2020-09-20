@@ -3,7 +3,7 @@ type User {
   id: ID! @id
   avatar: String
     @default(
-      value: "https://instapost-clone.s3.us-west-1.amazonaws.com/1597972559986"
+      value: "https://instapost-clone.s3-us-west-1.amazonaws.com/1597009545181"
     )
   username: String! @unique
   email: String! @unique
