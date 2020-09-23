@@ -13,17 +13,17 @@ export default {
       }
 
       if (email === "demo@gmail.com" || email === "demoUser") {
-        await prisma.updateUser({ 
-          where: { id: user.id }, 
-          data: { loginSecret: "" }
-        });
+        // await prisma.updateUser({ 
+        //   where: { id: user.id }, 
+        //   data: { loginSecret: "" }
+        // });
         return generateToken(user.id);
       }
       if (user.loginSecret === secret) {
-        await prisma.updateUser({ 
-          where: { id: user.id }, 
-          data: { loginSecret: "" }
-        });
+        // await prisma.updateUser({ 
+        //   where: { id: user.id }, 
+        //   data: { loginSecret: "" }
+        // });
         return generateToken(user.id);
       } else {
         throw Error("Wrong email/passcode combination");

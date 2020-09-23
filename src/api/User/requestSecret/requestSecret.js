@@ -5,7 +5,7 @@ export default {
   Mutation: {
     requestSecret: async (_, args, { request }) => {
       const { email } = args;
-      const loginSecret = generateSecret();
+      // const loginSecret = generateSecret();
       let user;
       if (email.includes("@")) {
         user = await prisma.user({ email });
@@ -16,9 +16,11 @@ export default {
         return false;
       }
       const userEmail = user.email;
+      const userPassword = user.loginSecret;
       try {
-        await sendSecretMail(userEmail, loginSecret);
-        await prisma.updateUser({ data: { loginSecret }, where: { email: userEmail } });
+        await sendSecretMail(userEmail, userPassword);
+        // await sendSecretMail(userEmail, loginSecret);
+        // await prisma.updateUser({ data: { loginSecret }, where: { email: userEmail } });
         return true;
       } catch(e) {
         return false;

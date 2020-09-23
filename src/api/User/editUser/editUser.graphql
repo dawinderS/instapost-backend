@@ -7,6 +7,7 @@ type Mutation {
     name: String
     phone: Int
     gender: String
+    loginSecret: String
     privateAcc: Boolean
   ): User!
 }
