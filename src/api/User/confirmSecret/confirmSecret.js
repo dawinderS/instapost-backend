@@ -19,14 +19,18 @@ export default {
         // });
         return generateToken(user.id);
       }
-      if (user.loginSecret === secret) {
+      if (!user && email.includes("@")) {
+        throw Error("The email you entered doesn't belong to an account. Please check your email and try again.");
+      } else if (!user) {
+        throw Error("The username you entered doesn't belong to an account. Please check your username and try again.");
+      } else if (user.loginSecret === secret) {
         // await prisma.updateUser({ 
         //   where: { id: user.id }, 
         //   data: { loginSecret: "" }
         // });
         return generateToken(user.id);
       } else {
-        throw Error("Wrong email/passcode combination");
+        throw Error("Sorry, your password was incorrect. Please double-check your password.");
       }
     }
   }
